@@ -7,28 +7,34 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
 public class LoginActivity extends AppCompatActivity {
 
-
-
+    DatabaseHelper db;
+    EditText txtUser, txtPass;
+    Button btnLogin, viewSignup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button btnLogin = findViewById(R.id.btnLogin);
-
-        Button viewSignup = findViewById(R.id.btnSignup);
+        db = new DatabaseHelper(this, "Login.db", null, 1);
+        txtUser = findViewById(R.id.edtUser);
+        txtPass = findViewById(R.id.edtPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        viewSignup = findViewById(R.id.btnSignup);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText txtUser = findViewById(R.id.edtUser);
-                EditText txtPass = findViewById(R.id.edtPassword);
+                 if (txtUser.equals("") || txtPass.equals("")) {
+                     Toast.makeText(getApplicationContext(), "Field are empty", Toast.LENGTH_SHORT);
+                 }
+
                 if (txtUser.getText().toString().equals("admin") && txtPass.getText().toString().equals("P@ssword")) {
                     Intent i = new Intent(v.getContext(), MainActivity.class);
                     startActivity(i);

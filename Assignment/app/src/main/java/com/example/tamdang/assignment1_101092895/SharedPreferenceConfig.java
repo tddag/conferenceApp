@@ -25,6 +25,11 @@ public class SharedPreferenceConfig {
         editor.commit();
     }
 
+    public String readLoginUser(){
+        return sharedPreferences.getString("username", "nothing");
+
+    }
+
     public boolean readLoginStatus() {
         boolean status = false;
         status = sharedPreferences.getBoolean(context.getResources().getString(R.string.login_status_preference), false);

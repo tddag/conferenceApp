@@ -1,21 +1,31 @@
 package com.example.tamdang.assignment1_101092895;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private SQLiteDatabase db;
+    private UserDBHelper usrHelper;
+    private SharedPreferenceConfig preferenceConfig;
     private CardView general_schedule_card, personal_schedule_card, speakers_card, maps_card,
             attendees_card, sponsors_card;
+    private TextView txtUser, txtLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferenceConfig = new SharedPreferenceConfig((getApplicationContext()));
+
         // Defining CardView
         general_schedule_card = findViewById(R.id.general_schedule_card);
         personal_schedule_card = findViewById(R.id.personal_schedule_card);
@@ -24,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attendees_card = findViewById(R.id.attendees_card);
         sponsors_card = findViewById(R.id.sponsors_card);
 
+        // Defining TextView
+        txtLogout = findViewById(R.id.txtLogout);
+        txtUser = findViewById(R.id.txtUser);
+
+        txtUser.setText(preferenceConfig.readLoginUser());
+
         // Set Click Listener to these Cards
         general_schedule_card.setOnClickListener(this);
         personal_schedule_card.setOnClickListener(this);
@@ -31,8 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         maps_card.setOnClickListener(this);
         attendees_card.setOnClickListener(this);
         sponsors_card.setOnClickListener(this);
-
-    }
+        txtLogout.setOnClickListener(this);
+        }
 
     @Override
     public void onClick(View v) {
@@ -63,6 +79,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 i = new Intent(this, SponsorsActivity.class);
                 startActivity(i);
                 break;
+            case R.id.txtLogout:
+                i = new Intent(this, LoginActivity.class);
+                preferenceConfig.writeLoginStatus(false);
+                startActivity(i);
+                finish();
+                break;
+
 
         }
     }

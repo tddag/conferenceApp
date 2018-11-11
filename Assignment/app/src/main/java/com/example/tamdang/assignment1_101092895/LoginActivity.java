@@ -47,10 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = txtPass.getText().toString();
                 User usr = usrHelper.getUser(db, username);
 
-                 if (username.equals("") || password.equals("")) {
-                     Toast.makeText(getApplicationContext(), "Field are empty", Toast.LENGTH_SHORT);
-                 } else {
-                     if (username.equals(usr.getUser_name()) && password.equals(usr.getPassword())) {
+                     if (usr!= null && password.equals(usr.getPassword())) {
                          Intent i = new Intent(v.getContext(), MainActivity.class);
                          startActivity(i);
                          preferenceConfig.writeLoginStatus(true);
@@ -63,9 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                          txtPass.setText("");
                      }
                  }
-
-
-            }
         });
 
     }

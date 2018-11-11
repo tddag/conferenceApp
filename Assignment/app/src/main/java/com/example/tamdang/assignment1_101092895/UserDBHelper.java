@@ -18,6 +18,7 @@ public class UserDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(UserContract.SQL_CREATE_USERS);
+        insertUser(db, new User("admin", "P@ssword"));
     }
 
     @Override
@@ -36,7 +37,6 @@ public class UserDBHelper extends SQLiteOpenHelper {
 
     public User getUser (SQLiteDatabase db, String username) {
         String [] projection = {
-                UserContract.UserEntity._ID,
                 UserContract.UserEntity.COL_NAME_USERNAME,
                 UserContract.UserEntity.COL_NAME_PASSWORD
         };

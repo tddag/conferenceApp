@@ -17,8 +17,7 @@ public class UserContract {
 
     public static final String SQL_CREATE_USERS =
             "CREATE TABLE " + UserEntity.TABLE_NAME + " (" +
-                    UserEntity._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    UserEntity.COL_NAME_USERNAME + " " + UserEntity.COL_TYPE_USERNAME + ", " +
+                    UserEntity.COL_NAME_USERNAME + " " + UserEntity.COL_TYPE_USERNAME + " PRIMARY KEY, " +
                     UserEntity.COL_NAME_PASSWORD + " " + UserEntity.COL_TYPE_PASSWORD + ")";
 
     public static final String SQL_DROP_USERS =

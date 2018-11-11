@@ -2,5 +2,11 @@
     <string name="app_name">Assignment1_101092895</string>
     <color name="white">#ffffff</color>
 
+    <string name="fname">First Name</string>
+    <string name="lname">Last Name</string>
+    <string name="affiliation">Affiliation</string>
+    <string name="email">Email</string>
+    <string name="bio">Bio</string>
+    <string name="profileImg">profileImg</string>
 
 </resources>

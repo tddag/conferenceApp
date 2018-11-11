@@ -22,7 +22,8 @@
         <activity android:name=".SpeakersActivity" />
         <activity android:name=".AttendeesActivity" />
         <activity android:name=".SponsorsActivity" />
-        <activity android:name=".MapsActivity"></activity>
+        <activity android:name=".MapsActivity" />
+        <activity android:name=".SpeakerProfile"></activity>
     </application>
 
 </manifest>

@@ -9,11 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 public class LoginActivity extends AppCompatActivity {
 
-    DatabaseHelper db;
+    UserDBHelper db;
     EditText txtUser, txtPass;
     Button btnLogin, viewSignup;
 
@@ -22,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        db = new DatabaseHelper(this, "Login.db", null, 1);
+        db = new UserDBHelper(this, "Login.db", null, 1);
         txtUser = findViewById(R.id.edtUser);
         txtPass = findViewById(R.id.edtPassword);
         btnLogin = findViewById(R.id.btnLogin);

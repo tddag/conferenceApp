@@ -2,5 +2,8 @@
     <string name="app_name">Assignment1_101092895</string>
     <color name="white">#ffffff</color>
 
+    <string name="login_preference">com.example.tamdang.assignment1_101092895_login_preference </string>
+    <string name="login_status_preference">com.example.tamdang.assignment1_101092895_login_status_preference </string>
+
 
 </resources>

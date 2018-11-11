@@ -1,10 +1,12 @@
 package com.example.tamdang.assignment1_101092895;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,21 +14,34 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class SpeakersActivity extends AppCompatActivity {
-
+    private SQLiteDatabase db;
+    private SpeakerDBHelper myDB;
 
     int[] IMAGES = {R.drawable.ic_record_voice_over_black_24dp, R.drawable.ic_record_voice_over_black_24dp, R.drawable.ic_record_voice_over_black_24dp,
             R.drawable.ic_record_voice_over_black_24dp, R.drawable.ic_record_voice_over_black_24dp};
 
-    String[] NAMES = {"Speaker 1", "Speaker 2", "Speaker 3", "Speaker 4", "Speaker 5"};
-
-    String[] DESCRIPTIONS = {"Description", "Description", "Description", "Description", "Description"};
-
+    String[] NAMES = {};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_speakers);
 
-        ListView lv = findViewById(R.id.lvSpeakers);
+        myDB = new SpeakerDBHelper(this);
+        db = myDB.getWritableDatabase();
+
+        Speaker p1 = myDB.getPresenter(db, 1);
+        Speaker p2 = myDB.getPresenter(db, 2);
+        Speaker p3 = myDB.getPresenter(db, 3);
+        Speaker p4 = myDB.getPresenter(db, 4);
+        Speaker p5 = myDB.getPresenter(db, 5);
+
+        NAMES = new String[]{p1.getFirstname() +" "+ p1.getLastname(),
+                                    p2.getFirstname() +" "+ p2.getLastname(),
+                                    p3.getFirstname() +" "+ p3.getLastname(),
+                                    p4.getFirstname() +" "+ p4.getLastname(),
+                                    p5.getFirstname() +" "+ p5.getLastname()};
+
+        final ListView lv = findViewById(R.id.lvSpeakers);
 
         CustomAdapter customAdapter = new CustomAdapter();
         lv.setAdapter(customAdapter);
@@ -42,6 +57,15 @@ public class SpeakersActivity extends AppCompatActivity {
             }
         });
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                position+=1;
+                Intent myIntent = new Intent(view.getContext(), SpeakerProfile.class);
+                myIntent.putExtra("ID", position+"");
+                startActivityForResult(myIntent, 0);
+            }
+        });
 
     }
 
@@ -69,11 +93,9 @@ public class SpeakersActivity extends AppCompatActivity {
 
             ImageView imageView = convertView.findViewById(R.id.imageView);
             TextView tvName = convertView.findViewById(R.id.textView);
-            TextView tvDescription = convertView.findViewById(R.id.textView2);
 
             imageView.setImageResource(IMAGES[position]);
             tvName.setText(NAMES[position]);
-            tvDescription.setText(DESCRIPTIONS[position]);
 
             return convertView;
         }

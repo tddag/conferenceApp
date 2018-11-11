@@ -19,6 +19,12 @@ public class SharedPreferenceConfig {
         editor.commit();
     }
 
+    public void writeLoginUser(String username) {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", username);
+        editor.commit();
+    }
+
     public boolean readLoginStatus() {
         boolean status = false;
         status = sharedPreferences.getBoolean(context.getResources().getString(R.string.login_status_preference), false);

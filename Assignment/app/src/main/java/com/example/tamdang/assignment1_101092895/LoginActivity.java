@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                          Intent i = new Intent(v.getContext(), MainActivity.class);
                          startActivity(i);
                          preferenceConfig.writeLoginStatus(true);
+                         preferenceConfig.writeLoginUser(username);
                      }
                      else {
                          TextView txtError = findViewById(R.id.txtError);

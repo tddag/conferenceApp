@@ -23,7 +23,8 @@
         <activity android:name=".AttendeesActivity" />
         <activity android:name=".SponsorsActivity" />
         <activity android:name=".MapsActivity" />
-        <activity android:name=".SpeakerProfile"></activity>
+        <activity android:name=".SpeakerProfile" />
+        <activity android:name=".SurveyActivity"></activity>
     </application>
 
 </manifest>

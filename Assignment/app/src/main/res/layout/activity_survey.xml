@@ -24,6 +24,7 @@
         android:layout_marginTop="20dp"/>
 
     <EditText
+        android:id="@+id/edtAns1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -37,6 +38,7 @@
         android:layout_marginTop="40dp"/>
 
     <EditText
+        android:id="@+id/edtAns2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -50,6 +52,7 @@
         android:layout_marginTop="40dp"/>
 
     <EditText
+        android:id="@+id/edtAns3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -69,6 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:background="@drawable/background_signup"
+            android:onClick="save"
             android:text="Submit" />
 
         <Button

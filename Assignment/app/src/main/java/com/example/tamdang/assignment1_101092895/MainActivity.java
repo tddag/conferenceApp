@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SharedPreferenceConfig preferenceConfig;
     private CardView general_schedule_card, personal_schedule_card, speakers_card, maps_card,
             attendees_card, sponsors_card;
-    private TextView txtUser, txtLogout;
+    private TextView txtUser, txtLogout, txtSurvey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Defining TextView
         txtLogout = findViewById(R.id.txtLogout);
         txtUser = findViewById(R.id.txtUser);
+        txtSurvey = findViewById(R.id.txtSurvey);
 
         txtUser.setText(preferenceConfig.readLoginUser());
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         attendees_card.setOnClickListener(this);
         sponsors_card.setOnClickListener(this);
         txtLogout.setOnClickListener(this);
+        txtSurvey.setOnClickListener(this);
         }
 
     @Override
@@ -84,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 preferenceConfig.writeLoginStatus(false);
                 startActivity(i);
                 finish();
+                break;
+            case R.id.txtSurvey:
+                i = new Intent(this, SurveyActivity.class);
+                startActivity(i);
                 break;
 
 

@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="1. Question 1 "
+        android:text="1. How useful is this app to you? "
         android:textAlignment="center"
         android:layout_marginTop="20dp"/>
 
@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="2. Question 2 "
+        android:text="2. Rate this app on the scale 1-5 (1 = very bad, 5 = very good)"
         android:textAlignment="center"
         android:layout_marginTop="40dp"/>
 
@@ -47,7 +47,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3. Question 3 "
+        android:text="3. What other functions would you expect from this app?"
         android:textAlignment="center"
         android:layout_marginTop="40dp"/>
 

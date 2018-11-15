@@ -44,7 +44,7 @@ public class SurveyActivity extends AppCompatActivity {
     public void save(View v) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
         String format = simpleDateFormat.format(new Date());
-        String text = format + "    " +  edtAns1.getText().toString() + ";" + edtAns2.getText().toString() + ";" + edtAns3.getText().toString();
+        String text = format + "    " +  "Q1: " + edtAns1.getText().toString() + "; Q2: " + edtAns2.getText().toString() + "; Q3: " + edtAns3.getText().toString();
         FileOutputStream fos = null;
 
         try {

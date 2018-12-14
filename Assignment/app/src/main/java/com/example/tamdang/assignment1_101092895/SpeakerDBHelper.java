@@ -12,7 +12,7 @@ public class SpeakerDBHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "presenter.db";
 
     public SpeakerDBHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME,   null, DATABASE_VERSION);
     }
 
     @Override

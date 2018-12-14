@@ -34,7 +34,6 @@ public class  MapsActivity extends AppCompatActivity implements SensorEventListe
         });
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        textViewMap = findViewById(R.id.textViewMap);
         Button btnShowMap = findViewById(R.id.btnShowMap);
         btnShowMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,14 +62,22 @@ public class  MapsActivity extends AppCompatActivity implements SensorEventListe
     public void onSensorChanged(SensorEvent event) {
         float[] v = event.values;
 
+        textViewMap = findViewById(R.id.textViewMap);
+
         //
         float sqrt = (v[0]*v[0]+v[1]*v[1]+v[2]*v[2])/
                 (SensorManager.GRAVITY_EARTH*SensorManager.GRAVITY_EARTH);
-        if(sqrt>=1){
+        textViewMap.setText("sqrt:" + sqrt);
+        if(sqrt>=2){
             textViewMap.setBackgroundColor(Color.RED);
         }else{
-            textViewMap.setBackgroundColor(Color.BLUE);
+            textViewMap.setBackgroundColor(Color.WHITE);
         }
+
+        textViewMap.setText("X:" + v[0] + " Y:" + v[1] + " Z:" + v[2]);
+
+
+
 
     }
 

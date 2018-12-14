@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -43,7 +44,7 @@ public class SurveyActivity extends AppCompatActivity {
     public void save(View v) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
         String format = simpleDateFormat.format(new Date());
-        String text = format + "    " +  edtAns1.getText().toString() + ";" + edtAns2.getText().toString() + ";" + edtAns3.getText().toString();
+        String text = format + "    " +  "Q1: " + edtAns1.getText().toString() + "; Q2: " + edtAns2.getText().toString() + "; Q3: " + edtAns3.getText().toString();
         FileOutputStream fos = null;
 
         try {
@@ -52,6 +53,7 @@ public class SurveyActivity extends AppCompatActivity {
             edtAns3.getText().clear();
             edtAns1.getText().clear();
             edtAns2.getText().clear();
+            Toast.makeText(this, "Save to " + getFilesDir() + "/" + FILE_NAME, Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
